@@ -24,12 +24,12 @@ PRIMARY KEY (id)
 
 CREATE TABLE flights(
 id INT AUTO_INCREMENT,
-aircrat INT NOT NULL,
+aircraft INT NOT NULL,
 pilot INT NOT NULL,
 data DATE,
 time TIME,
 flight_number INT UNIQUE NOT NULL,
 PRIMARY KEY (id),
-FOREIGN KEY (aircrat) REFERENCES aircraft (id),
+FOREIGN KEY (aircraft) REFERENCES aircraft (id),
 FOREIGN KEY (pilot) REFERENCES pilots (id)
 );

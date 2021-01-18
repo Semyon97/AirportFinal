@@ -70,7 +70,7 @@ public class Flights {
     public String toString() {
         return "Flights{" +
                 "id=" + id +
-                ", aircrat=" + aircrat +
+                ", aircraft=" + aircrat +
                 ", pilot=" + pilot +
                 ", data='" + data + '\'' +
                 ", time='" + time + '\'' +

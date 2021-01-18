@@ -5,14 +5,14 @@ public class Pilots {
     private int id;
     private String name;
     private String lastName;
-    private Rank pRank;
+    private Rank pilotRank;
     private String pilotCode;
 
-    public Pilots(int id, String name, String lastName, Rank pRank, String pilotCode) {
+    public Pilots(int id, String name, String lastName, Rank pilotRank, String pilotCode) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
-        this.pRank = pRank;
+        this.pilotRank = pilotRank;
         this.pilotCode = pilotCode;
     }
 
@@ -40,12 +40,12 @@ public class Pilots {
         this.lastName = lastName;
     }
 
-    public Rank getpRank() {
-        return pRank;
+    public Rank getPilotRank() {
+        return pilotRank;
     }
 
-    public void setpRank(Rank pRank) {
-        this.pRank = pRank;
+    public void setPilotRank(Rank pilotRank) {
+        this.pilotRank = pilotRank;
     }
 
     public String getPilotCode() {
@@ -62,7 +62,7 @@ public class Pilots {
                 "Id=" + id +
                 ", Name='" + name + '\'' +
                 ", Last_Name='" + lastName + '\'' +
-                ", P_Rank=" + pRank +
+                ", Pilot_Rank=" + pilotRank +
                 ", Pilot_Code='" + pilotCode + '\'' +
                 '}';
     }}

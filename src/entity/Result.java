@@ -12,9 +12,9 @@ public class Result {
     private String name;
     private String lastName;
     private String pilotCode;
-    private Rank pRank;
+    private Rank pilotRank;
 
-    public Result(String flightNumber, String data, String time, int tailNumber, String brand, String model, int passengerCapacity, String name, String lastName, String pilotCode, Rank pRank) {
+    public Result(String flightNumber, String data, String time, int tailNumber, String brand, String model, int passengerCapacity, String name, String lastName, String pilotCode, Rank pilotRank) {
         this.flightNumber = flightNumber;
         this.data = data;
         this.time = time;
@@ -25,7 +25,7 @@ public class Result {
         this.name = name;
         this.lastName = lastName;
         this.pilotCode = pilotCode;
-        this.pRank = pRank;
+        this.pilotRank = pilotRank;
     }
 
     public String getFlightNumber() {
@@ -108,12 +108,12 @@ public class Result {
         this.pilotCode = pilotCode;
     }
 
-    public Rank getpRank() {
-        return pRank;
+    public Rank getPilotRank() {
+        return pilotRank;
     }
 
-    public void setpRank(Rank pRank) {
-        this.pRank = pRank;
+    public void setPilotRank(Rank pilotRank) {
+        this.pilotRank = pilotRank;
     }
 
     @Override
@@ -129,7 +129,7 @@ public class Result {
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", pilotCode='" + pilotCode + '\'' +
-                ", rank='" + pRank + '\'' +
+                ", pilotRank='" + pilotRank + '\'' +
                 '}';
     }
 }

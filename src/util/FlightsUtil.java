@@ -11,13 +11,13 @@ public class FlightsUtil {
         String[] flightsArgs = line.split("; ");
 
         int id = Integer.parseInt(flightsArgs[0]);
-        int aircrat = Integer.parseInt(flightsArgs[1]);
+        int aircraft = Integer.parseInt(flightsArgs[1]);
         int pilot = Integer.parseInt(flightsArgs[2]);
         String data = flightsArgs[3];
         String time = flightsArgs[4];
         int flight_number = Integer.parseInt(flightsArgs[5]);
 
-        return new Flights(id, aircrat, pilot, data, time, flight_number);
+        return new Flights(id, aircraft, pilot, data, time, flight_number);
 
     }
 

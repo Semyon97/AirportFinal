@@ -13,22 +13,22 @@ public class PilotsUtil {
 
         int id = Integer.parseInt(pilotsArgs[0]);
         String name = pilotsArgs[1];
-        String last_name = pilotsArgs[2];
-        Rank rank = Rank.valueOf(pilotsArgs[3]);
-        String pilot_code = pilotsArgs[4];
+        String lastName = pilotsArgs[2];
+        Rank pilotRank = Rank.valueOf(pilotsArgs[3]);
+        String pilotCode = pilotsArgs[4];
 
-        return new Pilots(id, name, last_name, rank, pilot_code);
+        return new Pilots(id, name, lastName, pilotRank, pilotCode);
 
     }
 
     public static Pilots toObject (ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("id");
         String name = resultSet.getString("name");
-        String last_name = resultSet.getString("last_name");
-        Rank rank = Rank.valueOf(resultSet.getString("rank"));
-        String pilot_code = resultSet.getString("pilot_code");
+        String lastName = resultSet.getString("lastName");
+        Rank pilotRank = Rank.valueOf(resultSet.getString("pilotRank"));
+        String pilotCode = resultSet.getString("pilotCode");
 
-        return new Pilots(id, name, last_name, rank, pilot_code);
+        return new Pilots(id, name, lastName, pilotRank, pilotCode);
 
     }
 }

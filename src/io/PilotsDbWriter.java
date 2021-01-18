@@ -10,7 +10,7 @@ import java.util.List;
 
 public class PilotsDbWriter {
     private List<Pilots> pilots;
-    private static final String ADD = "INSERT INTO pilots (name, last_name, p_rank, pilot_code) VALUES (?, ?, ?, ?)";
+    private static final String ADD = "INSERT INTO pilots (name, last_name, pilot_rank, pilot_code) VALUES (?, ?, ?, ?)";
 
     public PilotsDbWriter(List<Pilots> pilots) {
         this.pilots = pilots;
@@ -29,10 +29,10 @@ public class PilotsDbWriter {
 
             statement.setString(1, pilots.getName());
             statement.setString(2, pilots.getLastName());
-            statement.setString(3, pilots.getpRank().toString());
+            statement.setString(3, pilots.getPilotRank().toString());
             statement.setString(4, pilots.getPilotCode());
 
-            statement.executeUpdate();
+            //statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

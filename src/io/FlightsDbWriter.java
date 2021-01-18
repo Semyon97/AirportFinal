@@ -34,7 +34,7 @@ public class FlightsDbWriter {
             statement.setString(4, flights.getTime());
             statement.setInt(5, flights.getFlightNumber());
 
-            statement.executeUpdate();
+            //statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

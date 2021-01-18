@@ -16,34 +16,35 @@ import java.util.List;
 public class FullInfoDbReader {
     private List<Result> resultList = new ArrayList<>();
 
-    private static final String SELECT_ALL = "SELECT f.flightNnumber, f.data, f.time, a.tailNumber, a.brand, a.model,"
-            + " a.passengerCapacity, p.lastName, p.name, p.pilotCode, p.pRank FROM flights f JOIN aircraft a ON f.aircrat=a.id JOIN pilots p ON f.pilot = p.id";
+    private static final String SELECT_ALL = "SELECT f.flightNumber, f.data, f.time, a.tailNumber, a.brand, a.model,"
+            + " a.passengerCapacity, p.lastName, p.name, p.pilotCode, p.pRank FROM flights f JOIN aircraft a ON f.aircraft=a.id JOIN pilots p ON f.pilot = p.id";
 
     public void readAll() {
         Connection connection = DbConnectionUtil.detConnection();
 
         try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL)) {
 
-            ResultSet result = statement.executeQuery();
+            try (ResultSet result = statement.executeQuery()) {
 
-            while (result.next()) {
-                String flightNumber = result.getString("f.flightNumber");
-                String data = result.getString("f.data");
-                String time = result.getString("f.time");
-                int tailNumber = result.getInt("a.tailNumber");
-                String brand = result.getString("a.brand");
-                String model = result.getString("a.model");
-                int passengerCapacity = result.getInt("a.passengerCapacity");
-                String lastName = result.getString("p.lastName");
-                String name = result.getString("p.name");
-                String pilotCode = result.getString("p.pilotCode");
-                Rank pRank = Rank.valueOf(result.getString("p.pRank"));
+                while (result.next()) {
+                    String flightNumber = result.getString("f.flightNumber");
+                    String data = result.getString("f.data");
+                    String time = result.getString("f.time");
+                    int tailNumber = result.getInt("a.tailNumber");
+                    String brand = result.getString("a.brand");
+                    String model = result.getString("a.model");
+                    int passengerCapacity = result.getInt("a.passengerCapacity");
+                    String lastName = result.getString("p.lastName");
+                    String name = result.getString("p.name");
+                    String pilotCode = result.getString("p.pilotCode");
+                    Rank pRank = Rank.valueOf(result.getString("p.pRank"));
 
-                Result res = new Result(flightNumber, data, time, tailNumber, brand, model, passengerCapacity, lastName, name, pilotCode, pRank);
-                resultList.add(res);
+                    Result res = new Result(flightNumber, data, time, tailNumber, brand, model, passengerCapacity, lastName, name, pilotCode, pRank);
+                    resultList.add(res);
 
-                System.out.println(flightNumber + ", " + data + ", " + time + ", " + tailNumber + ", " + brand + " "
-                        + model + ", " + passengerCapacity + ", " + lastName + " " + name + ", " + pilotCode + " (" + pRank + ")");
+                    System.out.println(flightNumber + ", " + data + ", " + time + ", " + tailNumber + ", " + brand + " "
+                            + model + ", " + passengerCapacity + ", " + lastName + " " + name + ", " + pilotCode + " (" + pRank + ")");
+                }
             }
 
         } catch (SQLException e) {
@@ -68,7 +69,7 @@ public class FullInfoDbReader {
                 writer.append(result.getLastName()).append(", ");
                 writer.append(result.getName()).append(", ");
                 writer.append(result.getPilotCode()).append(", ");
-                writer.append(result.getpRank().toString());
+                writer.append(result.getPilotRank().toString());
                 writer.append("\n");
             }
             writer.flush();

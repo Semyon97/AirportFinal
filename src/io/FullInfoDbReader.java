@@ -24,7 +24,7 @@ public class FullInfoDbReader {
 
         try (PreparedStatement statement = connection.prepareStatement(SELECT_ALL)) {
 
-            try (ResultSet result = statement.executeQuery()) {
+            ResultSet result = statement.executeQuery(); {
 
                 while (result.next()) {
                     String flightNumber = result.getString("f.flight_number");
@@ -37,13 +37,13 @@ public class FullInfoDbReader {
                     String lastName = result.getString("p.last_name");
                     String name = result.getString("p.name");
                     String pilotCode = result.getString("p.pilot_code");
-                    Rank pRank = Rank.valueOf(result.getString("p.pilot_rank"));
+                    Rank pilotRank = Rank.valueOf(result.getString("p.pilot_rank"));
 
-                    Result res = new Result(flightNumber, data, time, tailNumber, brand, model, passengerCapacity, lastName, name, pilotCode, pRank);
+                    Result res = new Result(flightNumber, data, time, tailNumber, brand, model, passengerCapacity, lastName, name, pilotCode, pilotRank);
                     resultList.add(res);
 
                     System.out.println(flightNumber + ", " + data + ", " + time + ", " + tailNumber + ", " + brand + " "
-                            + model + ", " + passengerCapacity + ", " + lastName + " " + name + ", " + pilotCode + " (" + pRank + ")");
+                            + model + ", " + passengerCapacity + ", " + lastName + " " + name + ", " + pilotCode + " (" + pilotRank + ")");
                 }
             }
 
@@ -51,8 +51,6 @@ public class FullInfoDbReader {
             e.printStackTrace();
         }
     }
-
-
 
 
     public void writeResult() {

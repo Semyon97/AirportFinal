@@ -33,7 +33,7 @@ public class AircraftDbWriter {
             statement.setInt(3, aircraft.getPassengerCapacity());
             statement.setInt(4, aircraft.getTailNumber());
 
-            //statement.executeUpdate();
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();

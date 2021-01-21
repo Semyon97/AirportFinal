@@ -11,7 +11,7 @@ import java.util.List;
 public class FlightsDbWriter {
 
     private List<Flights> flights;
-    private static final String ADD = "INSERT INTO flights (aircrat, pilot, data, time, flight_number) VALUES (?, ?, ?, ?, ?)";
+    private static final String ADD = "INSERT INTO flights (aircraft, pilot, data, time, flight_number) VALUES (?, ?, ?, ?, ?)";
 
     public FlightsDbWriter(List<Flights> flights) {
         this.flights = flights;
@@ -28,13 +28,13 @@ public class FlightsDbWriter {
         Connection connection = DbConnectionUtil.detConnection();
 
         try (PreparedStatement statement = connection.prepareStatement(ADD)) {
-            statement.setInt(1, flights.getAircrat());
+            statement.setInt(1, flights.getAircraft());
             statement.setInt(2, flights.getPilot());
             statement.setString(3, flights.getData());
             statement.setString(4, flights.getTime());
             statement.setInt(5, flights.getFlightNumber());
 
-            //statement.executeUpdate();
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

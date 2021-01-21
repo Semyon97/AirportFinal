@@ -15,7 +15,7 @@ import java.util.List;
 
 public class FullInfoDbReader {
     private final List<Result> resultList = new ArrayList<>();
-
+//    private static  final String ADD = "INSERT INTO ";
     private static final String SELECT_ALL = "SELECT f.flight_number, f.data, f.time, a.tail_number, a.brand, a.model,"
             + " a.passenger_capacity, p.last_name, p.name, p.pilot_code, p.pilot_rank FROM flights f JOIN aircraft a ON f.aircraft=a.id JOIN pilots p ON f.pilot = p.id";
 

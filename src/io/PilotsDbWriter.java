@@ -32,7 +32,7 @@ public class PilotsDbWriter {
             statement.setString(3, pilots.getPilotRank().toString());
             statement.setString(4, pilots.getPilotCode());
 
-            //statement.executeUpdate();
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }

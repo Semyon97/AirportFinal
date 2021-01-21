@@ -3,15 +3,15 @@ package entity;
 public class Flights {
 
     private int id;
-    private int aircrat;
+    private int aircraft;
     private int pilot;
     private String data;
     private String time;
     private int flightNumber;
 
-    public Flights(int id, int aircrat, int pilot, String data, String time, int flightNumber) {
+    public Flights(int id, int aircraft, int pilot, String data, String time, int flightNumber) {
         this.id = id;
-        this.aircrat = aircrat;
+        this.aircraft = aircraft;
         this.pilot = pilot;
         this.data = data;
         this.time = time;
@@ -26,12 +26,12 @@ public class Flights {
         this.id = id;
     }
 
-    public int getAircrat() {
-        return aircrat;
+    public int getAircraft() {
+        return aircraft;
     }
 
-    public void setAircrat(int aircrat) {
-        this.aircrat = aircrat;
+    public void setAircraft(int aircraft) {
+        this.aircraft = aircraft;
     }
 
     public int getPilot() {
@@ -70,7 +70,7 @@ public class Flights {
     public String toString() {
         return "Flights{" +
                 "id=" + id +
-                ", aircraft=" + aircrat +
+                ", aircraft=" + aircraft +
                 ", pilot=" + pilot +
                 ", data='" + data + '\'' +
                 ", time='" + time + '\'' +

@@ -4,6 +4,7 @@ import entity.Rank;
 import entity.Result;
 import util.DbConnectionUtil;
 
+import javax.xml.namespace.QName;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -15,7 +16,6 @@ import java.util.List;
 
 public class FullInfoDbReader {
     private final List<Result> resultList = new ArrayList<>();
-//    private static  final String ADD = "INSERT INTO ";
     private static final String SELECT_ALL = "SELECT f.flight_number, f.data, f.time, a.tail_number, a.brand, a.model,"
             + " a.passenger_capacity, p.last_name, p.name, p.pilot_code, p.pilot_rank FROM flights f JOIN aircraft a ON f.aircraft=a.id JOIN pilots p ON f.pilot = p.id";
 
@@ -39,11 +39,11 @@ public class FullInfoDbReader {
                     String pilotCode = result.getString("p.pilot_code");
                     Rank pilotRank = Rank.valueOf(result.getString("p.pilot_rank"));
 
-                    Result res = new Result(flightNumber, data, time, tailNumber, brand, model, passengerCapacity, lastName, name, pilotCode, pilotRank);
+                    Result res = new Result(flightNumber, data, time, tailNumber, brand, model, passengerCapacity, lastName, String.format("%1.1s", name), pilotCode, pilotRank);
                     resultList.add(res);
 
                     System.out.println(flightNumber + ", " + data + ", " + time + ", " + tailNumber + ", " + brand + " "
-                            + model + ", " + passengerCapacity + ", " + lastName + " " + name + ", " + pilotCode + " (" + pilotRank + ")");
+                            + model + ", " + passengerCapacity + ", " + lastName + " " + String.format("%1.1s", name) + ", " + pilotCode + " (" + pilotRank + ")");
                 }
             }
 
@@ -64,8 +64,8 @@ public class FullInfoDbReader {
                 writer.append(result.getBrand()).append(", ");
                 writer.append(result.getModel()).append(", ");
                 writer.append(String.valueOf(result.getPassengerCapacity())).append(", ");
-                writer.append(result.getLastName()).append(", ");
-                writer.append(result.getName()).append(", ");
+                writer.append(result.getName()).append(" ");
+                writer.append(result.getLastName()).append("., ");
                 writer.append(result.getPilotCode()).append(", ");
                 writer.append(result.getPilotRank().toString());
                 writer.append("\n");
